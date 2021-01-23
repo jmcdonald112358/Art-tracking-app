@@ -1,0 +1,1 @@
+//This file is the JS for the search page AND results page due to common functions/variables needing to be referenced
