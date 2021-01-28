@@ -16,6 +16,8 @@ function getWaltersData(query) {
     }).then(function (response) {
        console.log(response);
       for (let i = 0; i < userLimit; i++) {
+
+         // append data
          console.log(response.items[i]);
       };
       
@@ -33,7 +35,7 @@ function getMetData(query) {
    }).then(function(queryResponse) {
       console.log(queryResponse);
       
-      for (i=0; i < userLimit; i++){ //Update index limiter to reference input req
+      for (i=0; i < userLimit; i++){ 
          let objectID = queryResponse.objectIDs[i];
          let objectURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/" + objectID; 
 
