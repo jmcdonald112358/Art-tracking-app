@@ -1,0 +1,30 @@
+body {
+    align-content: center;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 100px;
+}
+#searchBtn {
+    transition: .3s;
+}
+
+#searchBtn:hover {
+    letter-spacing: 2px;
+
+}
+
+#shade {
+    transition: .3s;
+    padding: 0;
+    display: flex;
+}
+
+#shade:hover {
+    box-shadow: 0 0 15px #bada55;
+}
+
+
+
