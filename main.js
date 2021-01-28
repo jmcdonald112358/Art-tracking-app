@@ -8,14 +8,16 @@
 function getWaltersData(query) {
     let key = 'dQsyvNyQ9qRp3zhGJhVSf70Yc7utHj2eyGPZXEZ7VNAt1C8bmtH2cVFWQKLoS58Q';
     let queryURL = 'http://api.thewalters.org/v1/objects?apikey=' + key + '&creator=' + query;
-    let userLimit = $('#userLimit').val();  
+    let userLimit = $('#userLimit').val();
+      
     $.ajax({
         url: queryURL,
         method: 'GET'
     }).then(function (response) {
+       console.log(response);
       for (let i = 0; i < userLimit; i++) {
-         console.log(response);
-      } 
+         console.log(response.items[i]);
+      };
       
     });
 };
