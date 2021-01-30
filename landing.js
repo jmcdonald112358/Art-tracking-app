@@ -16,8 +16,8 @@ function getPic() {
 }
 
 //Setting divs to variables for inserting the randomly generated quote and img.
-const quoteDiv = $('div');
-const imgDiv = $('img');
+const quoteDiv = $('#quotediv');
+const imgDiv = $('#imgdiv');
 let newQuote = $('<h3>').text(getQuote());
 let newImg = $('img').attr('src', getPic());
 
