@@ -1,6 +1,9 @@
 html {
     background-color: rgb(77, 77, 77);
 }
+main {
+    text-align: center;
+}
 #quotediv h3 {
     color: white;
 }
@@ -12,6 +15,8 @@ a{
     border-radius: 5px;
     color: black;
     transition: .5s;
+    margin-left: auto;
+    margin-right: auto;
 }
 a:hover{
     letter-spacing: 2px;
@@ -19,4 +24,8 @@ a:hover{
 }
 img{
     width: 33%;
+    margin: 10px auto;
+}
+#imgdiv{
+    display: flex;
 }
