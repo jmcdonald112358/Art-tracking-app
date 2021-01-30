@@ -1,6 +1,31 @@
 html {
     background-color: rgb(77, 77, 77);
 }
+main {
+    text-align: center;
+}
 #quotediv h3 {
     color: white;
+}
+a{
+    text-decoration: none;
+    background-color: lightskyblue;
+    padding: 3px 8px;
+    border: solid 1px black;
+    border-radius: 5px;
+    color: black;
+    transition: .5s;
+    margin-left: auto;
+    margin-right: auto;
+}
+a:hover{
+    letter-spacing: 2px;
+    box-shadow: black 3px 3px 10px;
+}
+img{
+    width: 33%;
+    margin: 10px auto;
+}
+#imgdiv{
+    display: flex;
 }
