@@ -5,8 +5,11 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 100px;
+    font-size: 200px;
 }
+
+.title.has-text-light {font-size: 100px;}
+
 #searchBtn {
     transition: .3s;
 }
@@ -26,5 +29,31 @@ h1 {
     box-shadow: 0 0 15px #bada55;
 }
 
+
+#dropitlikeitshot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI';
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.dropdown-button { 
+    font-family: 'Segoe UI';
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+#dropdown-button {
+    text-align: right;
+    align-items: center;
+    justify-content: center;
+}
 
 
