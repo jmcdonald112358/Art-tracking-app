@@ -35,7 +35,7 @@ function getMetData(query) {
    }).then(function(queryResponse) {
       console.log(queryResponse);
       
-      for (i=0; i < userLimit; i++){ 
+      for (i=0; i < 10; i++){ 
          let objectID = queryResponse.objectIDs[i];
          let objectURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/" + objectID; 
 
@@ -51,3 +51,22 @@ function getMetData(query) {
    })
 }
 
+//Event listener for search button on search page
+$("#searchBtn").click(function(event){
+   event.preventDefault();
+
+   //Get data
+   let query = $("#enterArtist").val().trim();
+   console.log("The query is: " + query);
+
+   getWaltersData(query);
+   getMetData(query);
+
+   //Redirect to results page
+   // setTimeout(() => {
+   //    window.location.href = "results.html";
+   // }, 3000);
+
+   //Execute function to display data
+
+});
