@@ -63,9 +63,9 @@ $("#searchBtn").click(function(event){
    getMetData(query);
 
    //Redirect to results page
-   // setTimeout(() => {
-   //    window.location.href = "results.html";
-   // }, 3000);
+   setTimeout(() => {
+      window.location.href = "results.html";
+   }, 3000);
 
    //Execute function to display data
 
