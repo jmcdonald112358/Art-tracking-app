@@ -19,8 +19,8 @@ function getPic() {
 const quoteDiv = $('#quotediv');
 const imgDiv = $('#imgdiv');
 let newQuote = $('<h3>').text(getQuote());
-let newImg = $('img').attr('src', getPic());
+let newImg = $('<img>').attr('src', getPic());
 
 //Appending the new quote to the div
-quoteDiv.append(newQuote);
+quoteDiv.append(newQuote); 
 imgDiv.append(newImg);
