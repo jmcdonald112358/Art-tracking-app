@@ -4,7 +4,6 @@
 
 
 //Function for Walters Collection search by author and set it in local storage
-let waltRes = [];
 
 function getWaltersData(query) {
     let key = 'dQsyvNyQ9qRp3zhGJhVSf70Yc7utHj2eyGPZXEZ7VNAt1C8bmtH2cVFWQKLoS58Q';
@@ -18,8 +17,7 @@ function getWaltersData(query) {
        
          for (let i = 0; i < 10; i++) {
             let resArr = [response.Items[i].Title, response.Items[i].Creator, response.Items[i].Collection, response.Items[i].PrimaryImage.Medium];
-            waltRes.push(resArr);
-            // localStorage.setItem('item '+i, JSON.stringify(resArr));           
+            localStorage.setItem('item '+i, JSON.stringify(resArr));           
          }
     });
 };
@@ -27,11 +25,11 @@ function getWaltersData(query) {
 // function to append data drawn from local storage
 function appendWalterData() {
    let walterDiv = $('#walterresults');
-   for (let i = 0; i < waltRes.length; i++) {
-      let resTitle = $('<h4>').text(waltRes[i][0]);
-      let resAuth = $('<h5>').text(waltRes[i][1]);
-      let resCollection = $('<p>').text(waltRes[i][2]);
-      let resImg = $('<img>').attr('src', waltRes[i][3]);
+   for (let i = 0; i < 10; i++) {
+      let resTitle = $('<h4>').text(JSON.parse(localStorage.getItem('item '+i))[0]);
+      let resAuth = $('<h5>').text(JSON.parse(localStorage.getItem('item '+i))[1]);
+      let resCollection = $('<p>').text(JSON.parse(localStorage.getItem('item '+i))[2]);
+      let resImg = $('<img>').attr('src', JSON.parse(localStorage.getItem('item '+i))[3]);
       walterDiv.append(resTitle);
       walterDiv.append(resAuth);
       walterDiv.append(resCollection);
@@ -84,7 +82,7 @@ $("#searchBtn").click(function(event){
    }, 1500);
 
    //Execute function to display data
-   setTimeout(() => {
-      appendWalterData();
-   }, 2500);
+
 });
+
+appendWalterData();
