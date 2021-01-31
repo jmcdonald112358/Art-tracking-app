@@ -33,7 +33,8 @@ function appendWalterData() {
       walterDiv.append(resTitle);
       walterDiv.append(resAuth);
       walterDiv.append(resCollection);
-      walterDiv.append(resImg);      
+      walterDiv.append(resImg);
+      walterDiv.append('<hr>');      
    };   
 };
 
