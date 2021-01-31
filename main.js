@@ -3,25 +3,39 @@
 
 
 
-//Function for Walters Collection search by author
+//Function for Walters Collection search by author and set it in local storage
 
 function getWaltersData(query) {
     let key = 'dQsyvNyQ9qRp3zhGJhVSf70Yc7utHj2eyGPZXEZ7VNAt1C8bmtH2cVFWQKLoS58Q';
     let queryURL = 'http://api.thewalters.org/v1/objects?apikey=' + key + '&creator=' + query;
-    let userLimit = $('#userLimit').val();
-      
+   //  let userLimit = $('#userLimit').val(); commenting out this variable until its source is established   
     $.ajax({
         url: queryURL,
         method: 'GET'
     }).then(function (response) {
        console.log(response);
-      for (let i = 0; i < userLimit; i++) {
-
-         // append data
-         console.log(response.items[i]);
-      };
-      
+       
+         for (let i = 0; i < 10; i++) {
+            let resArr = [response.Items[i].Title, response.Items[i].Creator, response.Items[i].Collection, response.Items[i].PrimaryImage.Medium];
+            localStorage.setItem('item '+i, JSON.stringify(resArr));           
+         }
     });
+};
+
+// function to append data drawn from local storage
+function appendWalterData() {
+   let walterDiv = $('#walterresults');
+   for (let i = 0; i < 10; i++) {
+      let resTitle = $('<h4>').text(JSON.parse(localStorage.getItem('item '+i))[0]);
+      let resAuth = $('<h5>').text(JSON.parse(localStorage.getItem('item '+i))[1]);
+      let resCollection = $('<p>').text(JSON.parse(localStorage.getItem('item '+i))[2]);
+      let resImg = $('<img>').attr('src', JSON.parse(localStorage.getItem('item '+i))[3]);
+      walterDiv.append(resTitle);
+      walterDiv.append(resAuth);
+      walterDiv.append(resCollection);
+      walterDiv.append(resImg);
+      walterDiv.append('<hr>');      
+   };   
 };
 
 //Function for The Met collection
@@ -65,8 +79,10 @@ $("#searchBtn").click(function(event){
    //Redirect to results page
    setTimeout(() => {
       window.location.href = "results.html";
-   }, 3000);
+   }, 1500);
 
    //Execute function to display data
 
 });
+
+appendWalterData();

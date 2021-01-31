@@ -31,18 +31,41 @@ main {
     padding: 2rem 1rem;
 }
 
+.restitle {
+    font-size: 20px;
+}
+
 #walterresults {
     padding: 1rem;
     border: #c53306 solid 1px;
     border-radius: 5px;
-    display:flex;
-    justify-content:space-around;
+    text-align: center;
 }
 
 #metresults {
     padding: 1rem;
     border: #c53306 solid 1px;
     border-radius: 5px;
-    display:flex;
-    justify-content:space-around;
+    text-align: center;
+}
+
+.results h4 {
+    color: white;
+}
+
+.results h5 {
+    color: white;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.results p {
+    color: white;
+    font-size: 10px;
+}
+
+img {
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }
