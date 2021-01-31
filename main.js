@@ -16,7 +16,7 @@ function getWaltersData(query) {
        console.log(response);
        
          for (let i = 0; i < 10; i++) {
-            let resArr = [response.items[i].Title, response.items[i].Creator, response.items[i].Collection, response.items[i].PrimaryImage.Medium];
+            let resArr = [response.Items[i].Title, response.Items[i].Creator, response.Items[i].Collection, response.Items[i].PrimaryImage.Medium];
             localStorage.setItem('item '+i, JSON.stringify(resArr));           
          }
     });
@@ -78,7 +78,7 @@ $("#searchBtn").click(function(event){
    //Redirect to results page
    setTimeout(() => {
       window.location.href = "results.html";
-   }, 3000);
+   }, 1500);
 
    //Execute function to display data
 
