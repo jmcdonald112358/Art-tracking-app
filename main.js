@@ -42,28 +42,91 @@ function appendWalterData() {
 function getMetData(query) {
    let queryURL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=" + query;
    let userLimit = $('#userLimit').val();
+   let metArr = [];
 
+   //API call get get object IDs for query
    $.ajax({
       url: queryURL,
       method: "GET"
    }).then(function(queryResponse) {
       console.log(queryResponse);
       
+      //Loop through requested number of results to get details with second API call
       for (i=0; i < 10; i++){ 
          let objectID = queryResponse.objectIDs[i];
          let objectURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/" + objectID; 
 
+         //API call to get details for the requested number of results
          $.ajax({
             url: objectURL,
             method: "GET"
          }).then(function(objectResponse) {
-            console.log(objectResponse);
-         })
+            console.log(JSON.parse(JSON.stringify(objectResponse)));
+            
+            //Build object with relevant details for each iteration and push into array of objects for this collection's responses
+            let iterationObj = {
+               title: objectResponse.title, 
+               name: objectResponse.artistDisplayName, 
+               date: objectResponse.objectDate, 
+               image: objectResponse.primaryImageSmall,
+               addl_info: objectResponse.objectWikidata_URL
+            }
 
-         //Append data to results page here
+            metArr.push(iterationObj);
+
+            //Store array of objects to local storage for retrieval in populating results cards
+            localStorage.setItem("metArr", JSON.stringify(metArr));    
+         })
       }
    })
+   
+   
 }
+
+//Function to append met data to results page
+function popMetData(){
+   let localMetData = JSON.parse(localStorage.getItem("metArr"));
+   console.log(localMetData);
+
+   for (i = 0; i < localMetData.length; i++){
+      let cardDetails = localMetData[i];
+
+      //Card image
+      let artCard = $("<div>").addClass("card mb-5").attr("id", "objectCard" + i);
+      $("#metresults").append(artCard);
+
+      let cardImage = $("<div>").addClass("card-image").attr("id", "cardImage" + i);
+      $("#objectCard" + i).append(cardImage);
+
+      let imageFig = $("<figure>").addClass("image is-3by2").attr("id", "imageFig" + i);
+      $("#cardImage" + i).append(imageFig);
+
+      let image = $("<img>").attr("src", cardDetails.image);      
+      $("#imageFig" + i).append(image);
+      
+      //Card content - title and artist
+      let cardContent = $("<div>").addClass("card-content has-background-grey").attr("id", "cardContent" + i);
+      $("#cardImage" + i).append(cardContent);
+
+      let cardMedia = $("<div>").addClass("media").attr("id", "cardMedia" + i);
+      $("#cardContent" + i).append(cardMedia);
+
+      let mediaContent = $("<div>").addClass("media-content").attr("id", "mediaContent" + i);
+      $("#cardMedia" + i).append(mediaContent);
+
+      let title = $("<p>").addClass("title is-5").text(cardDetails.title);
+      let artist = $("<p>").addClass("subtitle is-6").text(cardDetails.name);
+      $("#mediaContent" + i).append(title, artist);
+      
+      //Card content -- date and link to more info
+      let mainContent = $("<div>").addClass("content").attr("id", "mainContent" + i).append("<br>");
+      $("#cardContent"+ i).append(mainContent);
+      let displayDate = $("<p>").addClass("is-size-6").text("Approx. date of creation: " + cardDetails.date);
+      let additionalInfo = $("<a>").addClass("has-text-primary is-size-7").attr("href", cardDetails.addl_info).text("View more information on this piece!");
+      $("#mainContent" + i).append(displayDate, additionalInfo);
+   };
+};
+
 
 //Event listener for search button on search page
 $("#searchBtn").click(function(event){
@@ -79,10 +142,10 @@ $("#searchBtn").click(function(event){
    //Redirect to results page
    setTimeout(() => {
       window.location.href = "results.html";
-   }, 1500);
-
-   //Execute function to display data
-
+   }, 7500);
+   
 });
 
+//Execute functions to display data
+popMetData();
 appendWalterData();
