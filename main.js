@@ -142,7 +142,7 @@ $("#searchBtn").click(function(event){
    //Redirect to results page
    setTimeout(() => {
       window.location.href = "results.html";
-   }, 7500);
+   }, 1000);
    
 });
 
