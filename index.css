@@ -2,6 +2,7 @@ body {
     background-image: url(images/Rothko.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
+    letter-spacing: 5px;
 }
 main {
     text-align: center;
