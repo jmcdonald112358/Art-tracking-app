@@ -16,6 +16,7 @@ function getWaltersData(query) {
        console.log(response);
        
          for (let i = 0; i < 10; i++) {
+            localStorage.removeItem('item '+i);
             let resArr = [response.Items[i].Title, response.Items[i].Creator, response.Items[i].Collection, response.Items[i].PrimaryImage.Medium];
             localStorage.setItem('item '+i, JSON.stringify(resArr));           
          }
