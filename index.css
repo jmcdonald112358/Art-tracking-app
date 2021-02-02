@@ -1,13 +1,20 @@
-html {
-    background-color: rgb(77, 77, 77);
+body {
+    background-image: url(images/Rothko.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 main {
     text-align: center;
 }
 #quotediv h3 {
     color: white;
+    font-family: cursive;
+}
+#quotediv {
+    margin: 100px auto;
 }
 a{
+    position: relative;
     text-decoration: none;
     background-color: lightskyblue;
     padding: 3px 8px;
@@ -17,15 +24,32 @@ a{
     transition: .5s;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
 }
 a:hover{
     letter-spacing: 2px;
     box-shadow: black 3px 3px 10px;
 }
 img{
-    width: 33%;
-    margin: 10px auto;
+    width: 45%;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 #imgdiv{
     display: flex;
+}
+hr{
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+p{
+    color: white;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+br{
+    margin-bottom: 60px;
+
 }

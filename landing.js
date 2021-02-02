@@ -3,7 +3,7 @@ let quoteArr = ['Art is never finished, only abandoned. -Leonardo Da Vinci', 'Ev
 
 let srcArr = ['images/DaVinci.jpg', 'images/Ralphie.jpg', 'images/Picasso.jpg', 'images/HenryM.jpg'];
 
-let randomIndex = Math.floor(Math.random() * (quoteArr.length + 1));
+let randomIndex = Math.floor(Math.random() * (quoteArr.length));
 
 //Function which selects a random index from an array of quotes.
 function getQuote() {
