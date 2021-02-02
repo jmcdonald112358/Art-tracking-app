@@ -146,6 +146,8 @@ $("#searchBtn").click(function(event){
    
 });
 
+
+
 //Execute functions to display data
 popMetData();
 appendWalterData();
