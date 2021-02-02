@@ -7,7 +7,7 @@
 
 function getWaltersData(query) {
     let key = 'dQsyvNyQ9qRp3zhGJhVSf70Yc7utHj2eyGPZXEZ7VNAt1C8bmtH2cVFWQKLoS58Q';
-    let queryURL = 'http://api.thewalters.org/v1/objects?apikey=' + key + '&creator=' + query;
+    let queryURL = 'https://api.thewalters.org/v1/objects?apikey=' + key + '&creator=' + query;
    //  let userLimit = $('#userLimit').val(); commenting out this variable until its source is established   
     $.ajax({
         url: queryURL,
