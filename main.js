@@ -44,7 +44,7 @@ function getMetData(query) {
    let queryURL = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=" + query;
    let userLimit = $('#userLimit').val();
    let metArr = [];
-
+   
    //API call get get object IDs for query
    $.ajax({
       url: queryURL,
@@ -62,7 +62,7 @@ function getMetData(query) {
             url: objectURL,
             method: "GET"
          }).then(function(objectResponse) {
-            console.log(JSON.parse(JSON.stringify(objectResponse)));
+            
             
             //Build object with relevant details for each iteration and push into array of objects for this collection's responses
             let iterationObj = {
@@ -72,9 +72,10 @@ function getMetData(query) {
                image: objectResponse.primaryImageSmall,
                addl_info: objectResponse.objectWikidata_URL
             }
+            
 
             metArr.push(iterationObj);
-
+            
             //Store array of objects to local storage for retrieval in populating results cards
             localStorage.setItem("metArr", JSON.stringify(metArr));    
          })
@@ -86,10 +87,10 @@ function getMetData(query) {
 
 //Function to append met data to results page
 function popMetData(){
-   let localMetData = JSON.parse(localStorage.getItem("metArr"));
+   var localMetData = JSON.parse(localStorage.getItem("metArr"));
    console.log(localMetData);
 
-   for (i = 0; i < localMetData.length; i++){
+   for (let i = 0; i < 10; i++){
       let cardDetails = localMetData[i];
 
       //Card image
@@ -143,12 +144,32 @@ $("#searchBtn").click(function(event){
    //Redirect to results page
    setTimeout(() => {
       window.location.href = "results.html";
-   }, 1000);
+   }, 1500);
    
+});
+
+document.addEventListener('keyup',function(e){
+   if (e.key === 'Enter') {
+      e.preventDefault();
+
+      //Get data
+      let query = $("#enterArtist").val().trim();
+      console.log("The query is: " + query);
+   
+      getWaltersData(query);
+      getMetData(query);
+   
+      //Redirect to results page
+      setTimeout(() => {
+         window.location.href = "results.html";
+      }, 1500);
+ }
 });
 
 
 
 //Execute functions to display data
-popMetData();
-appendWalterData();
+
+   popMetData();
+   appendWalterData();
+
