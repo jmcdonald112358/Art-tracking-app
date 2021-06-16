@@ -24,3 +24,6 @@ This is the first group project of our class work! The idea behind the project c
 ### Please find a link to the site below along with screenshots of the current pages.
 
 [Link to Site](https://jmcdonald112358.github.io/Art-tracking-app/)
+
+
+![screenshot](./images/screenshot.jpeg)
